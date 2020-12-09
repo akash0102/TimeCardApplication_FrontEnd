@@ -29,7 +29,7 @@ class ApplyLeaveComponent extends Component {
         // step 5
         
             LeaveService.addLeave(leave).then(res =>{
-                this.props.history.push('/leaves');
+                this.props.history.push(`/leave/${this.state.empId}`);
             });
         
     }
@@ -39,6 +39,7 @@ class ApplyLeaveComponent extends Component {
     }
 
     changeToDateHandler= (event) => {
+        console.log(event.target.value);
         this.setState({toDate: event.target.value});
     }
     changeEmpIdHandler= (event) => {
@@ -46,12 +47,12 @@ class ApplyLeaveComponent extends Component {
     }
 
     cancel(){
-        this.props.history.push('/update-leave');
+        this.props.history.push(`/leave/${this.state.empId}`);
     }
 
     getTitle(){
        
-            return <h3 className="text-center">Add Leave</h3>
+        return <h3 className="text-center">Add Leave</h3>
         
     }
     render() {

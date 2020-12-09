@@ -8,6 +8,10 @@ class TimeCardService {
         return axios.get(API_BASE_URL+"/timecards");
     }
 
+    getTimeCardById(timeCardId){
+        return axios.get(API_BASE_URL+'/getTimeCard/'+timeCardId);
+    }
+
     enterTimeCard(empId,timecard){
         return axios.post(API_BASE_URL + `/timecardEntry/${empId}` , timecard);
     }

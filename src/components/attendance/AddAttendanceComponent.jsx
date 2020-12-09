@@ -54,7 +54,7 @@ class AddAttendanceComponent extends Component {
     }
     
     cancel(){
-        this.props.history.push(`/attendance/${this.state.id}`);
+        this.props.history.push(`/attendance/${this.state.empId}`);
     }
 
     handleChange() {

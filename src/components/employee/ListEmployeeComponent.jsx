@@ -33,7 +33,7 @@ class ListEmployeeComponent extends Component {
     }
 
     addEmployee(){
-        this.props.history.push('/add-employee');
+        this.props.history.push(`/add-employee/${this.state.employeeId}`);
     }
 
     render() {

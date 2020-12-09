@@ -3,10 +3,11 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import HeaderComponent from './components/main/HeaderComponent';
-import FooterComponent from './components/main/FooterComponent';
-import Home from './components/main/Home';
+//import FooterComponent from './components/main/FooterComponent';
+//import Home from './components/main/Home';
 import Profile from './components/main/Profile';
 import SignOut from './components/main/SignOut';
+import SignIn from './components/main/SignIn'
 
 import CreateEmployee from './components/employee/CreateEmployeeComponent';
 import UpdateEmployee from './components/employee/UpdateEmployeeComponent';
@@ -27,6 +28,7 @@ import AttendanceView from './components/attendance/GetAttendanceComponent';
 import CreateAttendance from './components/attendance/AddAttendanceComponent';
 import UpdateAttendance from './components/attendance/UpdateAttendanceComponent';
 
+import AltHome from'./homeslider/Alternate';
 
 function App() {
   return (
@@ -45,7 +47,7 @@ function App() {
                       <Route path = "/add-leave/:id" component = {AddLeave}></Route>
                       <Route path = "/view-leave/:id" exact component = {ViewLeave}></Route>
 
-                      <Route path = "/:id" exact component = {Home}></Route>
+                      {/* <Route path = "/:id" exact component = {Home}></Route> */}
                       <Route path = "/profile/:id" exact component = {Profile}></Route>
                       <Route path = "/signout"exact component = {SignOut}></Route>
 
@@ -58,10 +60,14 @@ function App() {
                       <Route path = "/update-attendance/:id" component = {UpdateAttendance}></Route>
                       <Route path = "/add-attendance/:id" component = {CreateAttendance}></Route>
                       <Route path = "/attendance-view/:id" exact component = {AttendanceView}></Route>
+
+                      <Route path = "/alternate/:id" exact component = {AltHome}></Route>
+
+                      <Route path = "/login" exact component = {SignIn}></Route>
                       
                     </Switch>
                 </div>
-              <FooterComponent />
+              {/* <FooterComponent /> */}
         </Router>
     </div>
     

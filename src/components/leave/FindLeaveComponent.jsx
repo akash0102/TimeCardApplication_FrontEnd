@@ -7,6 +7,7 @@ class FindLeaveComponent extends Component {
 
         this.state = {
             id: this.props.match.params.id,
+            empId:'',
             leave: {}
         }
     }
@@ -14,7 +15,13 @@ class FindLeaveComponent extends Component {
     componentDidMount(){
         LeaveService.getLeaveById(this.state.id).then( res => {
             this.setState({leave: res.data});
+            this.setState({empId: this.state.leave.employee.employeeId});
+            console.log(this.state.leave);
         })
+    }
+
+    cancel(){
+        this.props.history.push(`/leave/${this.state.empId}`);
     }
 
     render() {
@@ -34,10 +41,11 @@ class FindLeaveComponent extends Component {
                         </div>
                         <div className = "row">
                             <label> Emp ID: </label>
-                            <div> { this.state.leave.empId }</div>
+                            <div> { this.state.empId }</div>
                         </div>
+                        <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                     </div>
-
+                    
                 </div>
             </div>
         )

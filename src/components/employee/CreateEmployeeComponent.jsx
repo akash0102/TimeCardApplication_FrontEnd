@@ -26,7 +26,7 @@ class CreateEmployeeComponent extends Component {
 
         // step 5
         EmployeeService.createEmployee(employee).then(res =>{
-            this.props.history.push('/employees');
+            this.props.history.push(`/employees/${this.state.employeeId}`);
         });
         
     }
@@ -48,7 +48,7 @@ class CreateEmployeeComponent extends Component {
     }
 
     cancel(){
-        this.props.history.push('/employees');
+        this.props.history.push(`/employees/${this.state.employeeId}`);
     }
 
     getTitle(){
@@ -68,23 +68,23 @@ class CreateEmployeeComponent extends Component {
                                 <form>
                                     <div className = "form-group">
                                         <label> Name: </label>
-                                        <input placeholder="First Name" name="employeeName" className="form-control" 
+                                        <input placeholder="Full Name" name="employeeName" className="form-control" 
                                             value={this.state.employeeName} onChange={this.changeEmployeeNameHandler} />
                                     </div>
                                     <div className = "form-group">
                                         <label> Email Id: </label>
-                                        <input placeholder="Email Address" name="employeeEmail" className="form-control" 
-                                            value={this.state.employeeEmail} onChange={this.changeEmailHandler}/>
+                                        <input type="email" placeholder="Email Address" name="employeeEmail" className="form-control" 
+                                            value={this.state.employeeEmail} onChange={this.changeEmailHandler} required={true}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Role: </label>
                                         <input placeholder="Employee Role" name="employeeRole" className="form-control" 
-                                            value={this.state.employeeRole} onChange={this.changeRoleHandler}/>
+                                            value={this.state.employeeRole} onChange={this.changeRoleHandler} required={true}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Phone Number: </label>
                                         <input type="number" minLength="10" maxLength="10" placeholder="Phone Number" name="phoneNumber" className="form-control" 
-                                            value={this.state.phoneNumber} onChange={this.changePhoneNoHandler}/>
+                                            value={this.state.phoneNumber} onChange={this.changePhoneNoHandler} required={true}/>
                                     </div>
                                     <button className="btn btn-success" onClick={this.saveEmployee}>&#x2713;Save</button>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>&#x2716;Cancel</button>

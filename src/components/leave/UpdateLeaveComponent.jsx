@@ -30,7 +30,7 @@ class UpdateLeaveComponent extends Component {
 
     updateLeave = (e) => {
         e.preventDefault();
-        let leave = {fromDate: this.state.fromDate, todate: this.state.toDate};
+        let leave = {fromDate: this.state.fromDate, toDate: this.state.toDate};
         console.log('leave => ' + JSON.stringify(leave));
         console.log('id => ' + JSON.stringify(this.state.leaveId));
         LeaveService.updateLeave(leave, this.state.leaveId).then( res => {

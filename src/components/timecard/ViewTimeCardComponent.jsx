@@ -16,12 +16,13 @@ class ViewTimeCardComponent extends Component {
     }
 
     removeTimeCard(timeCardId){
-        TimeCardService.removeTimeCard(timeCardId).then( res => {
+        TimeCardService.deleteEntry(timeCardId).then( res => {
             this.setState({timeCards: this.state.timeCards.filter(timeCard => timeCard.timeCardId !== timeCardId)});
         });
     }
     updateTimeCard(timeCardId){
-        this.props.history.push(`/update-timeCard/${timeCardId}`);
+        console.log("timecard inside update",timeCardId);
+        this.props.history.push(`/update-timecard/${timeCardId}`);
     }
     addTimeCard(empId){
         this.props.history.push(`/add-timeCard/${empId}`);
@@ -51,9 +52,10 @@ class ViewTimeCardComponent extends Component {
 
                             <thead>
                                 <tr>
-                                    <th> From Date</th>
-                                    <th> To Date</th>
                                     <th> Employee Name</th>
+                                    <th> In Time</th>
+                                    <th> Out Time</th>
+                                    <th> Date</th>
                                     <th> Status</th>
                                     <th> Actions</th>
                                 </tr>
@@ -63,9 +65,10 @@ class ViewTimeCardComponent extends Component {
                                     this.state.timeCards.map(
                                         timeCard => 
                                         <tr key = {timeCard.timeCardId}>
-                                             <td> {timeCard.fromDate} </td>   
-                                             <td> {timeCard.toDate}</td>
-                                             <td> {timeCard.employee.employeeName}</td>
+                                            <td> {timeCard.employee.employeeName}</td>
+                                             <td> {timeCard.timeEntry} </td>   
+                                             <td> {timeCard.timeExit}</td>
+                                             <td> {timeCard.date}</td>
                                              <td> {timeCard.status}</td>
                                              <td>
                                                  <button onClick={ () => this.updateTimeCard(timeCard.timeCardId)} className="btn btn-info">Update </button>

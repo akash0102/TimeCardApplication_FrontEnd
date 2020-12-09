@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TimeCardService from '../../services/TimeCardService';
 
-class UpdateLeaveComponent extends Component {
+class UpdateTimeCardComponent extends Component {
     constructor(props) {
         super(props)
 
@@ -11,7 +11,8 @@ class UpdateLeaveComponent extends Component {
             date: '',
             timeEntry: '',
             timeExit: '',
-            status:''
+            status:'',
+            empId:''
         }
         this.changeTimeEntryHandler = this.changeTimeEntryHandler.bind(this);
         this.changeDateHandler = this.changeDateHandler.bind(this);
@@ -20,11 +21,12 @@ class UpdateLeaveComponent extends Component {
     }
 
     componentDidMount(){
-        TimeCardService.getTimeCardEntries(this.state.timeCardId).then( (res) =>{
+        TimeCardService.getTimeCardById(this.state.timeCardId).then( (res) =>{
             let timeCard = res.data;
             this.setState({timeEntry: timeCard.timeEntry,
                 timeExit: timeCard.timeExit,
-                date: timeCard.date
+                date: timeCard.date,
+                empId: timeCard.employee.employeeId
             });
         });
     }
@@ -37,7 +39,7 @@ class UpdateLeaveComponent extends Component {
         console.log('timeCard => ' + JSON.stringify(timeCard));
         console.log('id => ' + JSON.stringify(this.state.id));
         TimeCardService.updateEntry(timeCard, this.state.timeCardId).then(res =>{
-            this.props.history.push('/timecard');
+            this.props.history.push(`/timecard/${this.state.empId}`);
         });
     }
     
@@ -54,7 +56,7 @@ class UpdateLeaveComponent extends Component {
     }
 
     cancel(){
-        this.props.history.push('/timeCards');
+        this.props.history.push(`/timecard/${this.state.empId}`);
     }
 
     render() {
@@ -79,7 +81,7 @@ class UpdateLeaveComponent extends Component {
                                         </div>
                                         <div className = "form-group">
                                             <label> Exit Time: </label>
-                                            <input placeholder="Enter Exit Time" name="exitTime" className="form-control" 
+                                            <input type="time" placeholder="Enter Exit Time" name="exitTime" className="form-control" 
                                                 value={this.state.timeExit} onChange={this.changeExitTimeHandler}/>
                                         </div>
 
@@ -96,4 +98,4 @@ class UpdateLeaveComponent extends Component {
     }
 }
 
-export default UpdateLeaveComponent
+export default UpdateTimeCardComponent

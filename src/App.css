@@ -21,6 +21,68 @@ card {
   font-family: arial;
 }
 
+.cont {
+  width: 400px;  
+        overflow: hidden; 
+        padding: 50px;
+	margin:auto;
+        background: #128a02d0;  
+        border-radius: 15px ;
+  background-color: rgba(255, 255, 255, 0.253);
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+body{
+  /* background-image: url("nature.jpg"); */
+  background-repeat:no-repeat;
+  background-position:center;
+  position: relative;
+  background-size: cover;
+}
+
+/* Set a style for the submit button */
+.bttn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+/*
+.cen{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+*/
+.bttn:hover {
+  opacity: 1;
+}
+
+.theme{
+  height: fit-content;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:rgba(4, 0, 43, 0.918);
+  background-size: cover;
+  background-repeat: repeat;
+}
+
 .button1 {
   border: none;
   outline: 0;
